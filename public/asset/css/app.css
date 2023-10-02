@@ -1,0 +1,25 @@
+.link-btn {
+  background: none;
+  border: none;
+  font-family: unset;
+  font-size: unset;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* .link-btn-disabled {
+  background: none;
+  border: none;
+  font-family: unset;
+  font-size: unset;
+  text-decoration: underline;
+  cursor: crosshair;
+} */
+
+a.disabled, button.disabled {
+  pointer-events: none;
+}
+
+div.div-actions {
+  display: flex;
+}
