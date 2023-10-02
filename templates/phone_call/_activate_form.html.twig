@@ -1,0 +1,19 @@
+  <form method="post" action="{{ path('app_phone_call_activate', {'id': phone_call.id}) }}" onsubmit="return confirm('Are you sure you want to activate this note?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('activate' ~ phone_call.id) }}">
+{# <button class="btn">Activate</button> #}
+{% if app.user.department == phone_call.department and
+  (app.user.role == 'Boss' or app.user.role == 'Team leader')
+%}
+    <button class="link-btn" title="Activate note">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="cornflowerblue" class="bi bi-toggle-on" viewBox="0 0 16 16">
+        <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+      </svg>
+    </button>
+{% else %}
+    <button title="Activate note - Not allowed" class="link-btn" onclick="alert('Not allowed'); return false;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="grey" class="bi bi-toggle-on" viewBox="0 0 16 16">
+        <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+      </svg>
+    </button>
+{% endif %}
+  </form>
